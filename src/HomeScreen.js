@@ -14,6 +14,7 @@ const HomeScreen = () => {
 
     const [movieArr, setMovieArr] = useState(data)
     const [isLoading, setIsLoading] = useState(false)
+    const [source, setSource] = useState(null)
 
     const keyPair = virgilCrypto.generateKeys()
 
@@ -42,7 +43,7 @@ const HomeScreen = () => {
                 .fetch('GET', url)
                 .progress((received, total) =>
                     console.log(`Download - received: ${received} / total: ${total}`)
-                ) 
+                )
                 .then(async response => {
                     console.log('response', response)
                     const encryptedFile = await virgilCrypto.encryptFile({
